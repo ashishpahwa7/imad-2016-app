@@ -1,6 +1,7 @@
-var express = require('express');
-var morgan = require('morgan');
+var express = require('express'); //library used to create web servers
+var morgan = require('morgan'); // to output log of severes
 var path = require('path');
+
 
 var app = express();
 app.use(morgan('combined'));
@@ -16,6 +17,8 @@ app.get('/ui/style.css', function (req, res) {
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
 });
+
+
 
 
 var port = 8080; // Use 8080 for local development because you might already have apache running on 80
