@@ -35,7 +35,7 @@ var articles=
     'article-two' : {
     title : 'Article one Appy',
     heading : 'Article one',
-    date : 'September 30 2016',
+    date : 'September 25 2016',
     content: `
     ' <p>
                     
