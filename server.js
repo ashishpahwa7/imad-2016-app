@@ -6,8 +6,9 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-
-var articleOne = {
+var articles=
+{
+    'article-one' : {
     title : 'Article one Appy',
     heading : 'Article one',
     date : 'September 30 2016',
@@ -30,8 +31,56 @@ var articleOne = {
                     
                 </p>'
                 `
-    
-    
+},
+    'article-two' : {
+    title : 'Article one Appy',
+    heading : 'Article one',
+    date : 'September 30 2016',
+    content: `
+    ' <p>
+                    
+                    This is the content of my 1st artcile This is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcile
+                    
+                </p>
+                
+                <p>
+                    
+                    This is the content of my 1st artcile This is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcile
+                    
+                </p>
+                
+                <p>
+                    
+                    This is the content of my 1st artcile This is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcile
+                    
+                </p>'
+                `
+},
+    'article-three' : {
+    title : 'Article one Appy',
+    heading : 'Article one',
+    date : 'September 30 2016',
+    content: `
+    ' <p>
+                    
+                    This is the content of my 1st artcile This is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcile
+                    
+                </p>
+                
+                <p>
+                    
+                    This is the content of my 1st artcile This is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcile
+                    
+                </p>
+                
+                <p>
+                    
+                    This is the content of my 1st artcile This is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcileThis is the content of my 1st artcile
+                    
+                </p>'
+                `
+},
+
 };
 
 function createTemplate(data) {
@@ -88,9 +137,15 @@ app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
 
-app.get('/article-one', function(req, res ){
+
+
+app.get('/:articleName', function(req, res){
+
+    //articleName = artcile-one
+    //articles[articleaname] ==  {} content for artcile one
     
-    res.send(createTemplate(articleOne));
+    var articleName = res.params.artcleName;
+    res.send(createTemplate(articles[articleName]));
     
 });
 
