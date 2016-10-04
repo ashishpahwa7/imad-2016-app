@@ -25,18 +25,34 @@ var button = document.getElementById('counter');
 var counter = 0 ;
 button.onclick = function(){
     
-    //Make a request to counter end point
+
+    //Create a request object 
+    var request = XMLHttpRequest();
+    
     
     //capture the response in a variable
     
+    request.onreadystatechange = function(){
+        if(request.readyState == XMLHttpRequest.DONE){
+            //Take some action
+            if(request.status==200){
+                
+                var counter = request.responseText;
+                var span = document.getElementById('count')
+                span.innerHTML = counter.toString();
+                
+            }
+        }
+        //not done
+    };
     
-    //render the variable in correct span
+    //make the request
     
-    counter = counter+ 1;
-    
-    var span = document.getElementById('count');
-    span.innerHTML = counter.toString();
+    request.open('GET','http://ashishpahwa7.imad.hasura-app.io/counter',true);
+    request.send(null)
     
     
+    
+
     
 };
