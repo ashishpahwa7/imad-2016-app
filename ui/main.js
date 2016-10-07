@@ -22,12 +22,12 @@ img.onclick = function(){
 */
 
 var button = document.getElementById('counter');
-var counter = 0 ;
+
 button.onclick = function(){
     
 
     //Create a request object 
-    var request = XMLHttpRequest();
+    var request = new XMLHttpRequest();
     
     
     //capture the response in a variable
@@ -42,7 +42,7 @@ button.onclick = function(){
                 span.innerHTML = counter.toString();
                 
             }
-        }
+         }
         //not done
     };
     
